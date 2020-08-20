@@ -1,0 +1,23 @@
+.btn {
+  background: #eee;
+  color: #000;
+  margin: 10px 5px 5px;
+  padding: 2px 4px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: #ccc;
+}
+
+.btn-confirm {
+  background: rgb(83, 207, 83);
+}
+
+.btn-confirm:hover {
+  background: rgb(111, 238, 111);
+}

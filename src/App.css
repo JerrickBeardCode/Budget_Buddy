@@ -1,38 +1,194 @@
-.App {
+/* 
+   This CSS file holds styling rules for the entire project.
+   It is linked at the top of App.js
+*/
+
+/* Default */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-color: #222;
+  --light-color: #eee;
+  --primary-color: rgb(83, 207, 83);
+  --incomes-color: rgb(21, 114, 21);
+  --expenses-color: rgb(206, 9, 9);
+}
+
+body {
+  background-color: var(--dark-color);
+}
+
+/* Header */
+#header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 100%;
+}
+
+#main-header {
+  color: var(--primary-color);
+}
+
+/* Workspace */
+#workspace-container {
+  display: flex;
+  width: 100%;
+  height: 75vh;
+}
+
+/* Modal */
+.modal-container {
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  cursor: pointer;
+  background: #333;
+  height: 22%;
+  width: 30%;
   text-align: center;
+  border: 1.5px solid var(--primary-color);
+  padding: 10px 10px 20px 10px;
+  color: var(--light-color);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Sidebar */
+#sidebar-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 15%;
+  height: 100%;
+  background: #333;
+  justify-content: space-between;
+}
+
+#sidebar-container p {
+  text-align: center;
+  color: var(--light-color);
+}
+
+.sidebar-header {
+  color: var(--light-color);
+  margin-top: 10px;
+}
+
+.sidebar-inc-button,
+.sidebar-exp-button {
+  padding: 10px 5px;
+  margin: 0px 5px;
+  font-size: 0.85rem;
+  border-radius: 2px;
+  background-color: #ddd;
+  transition: 0.5s;
+}
+
+.sidebar-inc-button .inc-icon {
+  color: var(--incomes-color);
+  font-size: 1rem;
+}
+
+.sidebar-exp-button .exp-icon {
+  color: var(--expenses-color);
+  font-size: 1.2rem;
+}
+
+.sidebar-inc-button:hover,
+.sidebar-exp-button:hover {
+  cursor: pointer;
+  background-color: #bbb;
+}
+
+.sidebar-total {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.sidebar-total span {
+  color: var(--primary-color);
+}
+
+/* Incomes */
+#incomes-container {
+  display: flex;
+  width: 42.5%;
+  height: 100%;
+  background: var(--light-color);
+  flex-direction: column;
+}
+
+#incomes-container .incomes-header {
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+#incomes-container .incomes-header span {
+  color: var(--incomes-color);
+}
+
+/* Expenses */
+#expenses-container {
+  display: flex;
+  width: 42.5%;
+  height: 100%;
+  background: #333;
+  color: #eee;
+  flex-direction: column;
+}
+
+#expenses-container .expenses-header {
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+#expenses-container .expenses-header span {
+  color: var(--expenses-color);
+}
+
+/* TransactionList */
+.transactions-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Footer */
+#footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+  background: var(--dark-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#footer {
+  background: inherit;
+  color: #eee;
+  font-size: 0.6rem;
 }
