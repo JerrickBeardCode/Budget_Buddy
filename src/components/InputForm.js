@@ -1,24 +1,85 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Function for handling form submit is passed as a prop from Modal.js
+
+///// PROPS /////
 
 // handleForm: callback function to handle form's onSubmit
 // modal_body: the text before the input in the modal's body
 // onLabelKeyPress: callback function to handle when a key is pressed during input (usually 'Enter' key)
+
+class InputForm extends React.Component {
+  // State is used to handle multiple input fields
+  state = {
+    amount: null,
+    title: ''
+  };
+
+  handleChange = e => {
+    // Bracket notation to define new state
+    // name === 'amount' || 'title'
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  // Handles key press. If 'enter' key was hit, call onLabelKeyPress and pass
+  // it the current state object pair {amount, title}
+  handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      this.props.onLabelKeyPress(this.state);
+    }
+  };
+
+  render() {
+    // Destructure props
+    const { handleForm, modal_body, onLabelKeyPress } = this.props;
+
+    return (
+      <>
+        <form id="input-form" onSubmit={handleForm}>
+          <label>{`${modal_body} `}</label>
+          <input
+            type="text"
+            id="transaction-amount"
+            name="amount"
+            onKeyPress={this.handleKeyPress}
+            onChange={this.handleChange}
+          ></input>
+          <input
+            type="text"
+            id="transaction-title"
+            name="title"
+            onKeyPress={this.handleKeyPress}
+            onChange={this.handleChange}
+          ></input>
+        </form>
+      </>
+    );
+  }
+}
+
+export default InputForm;
+/*
 const InputForm = ({ handleForm, modal_body, onLabelKeyPress }) => {
+  // Destructure props in render
   return (
     <>
       <form id="input-form" onSubmit={handleForm}>
         <label>{`${modal_body} `}</label>
         <input
           type="text"
-          id="amount"
-          name="amount"
+          id="transaction-amount"
+          name="transaction-amount"
+          onKeyPress={onLabelKeyPress}
+        ></input>
+        <input
+          type="text"
+          id="transaction-title"
+          name="transaction-title"
           onKeyPress={onLabelKeyPress}
         ></input>
       </form>
     </>
   );
 };
-
-export default InputForm;
+*/

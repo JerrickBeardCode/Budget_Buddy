@@ -98,12 +98,13 @@ body {
 
 .sidebar-inc-button,
 .sidebar-exp-button {
-  padding: 10px 5px;
+  padding: 8px 5px;
   margin: 0px 5px;
   font-size: 0.85rem;
   border-radius: 2px;
   background-color: #ddd;
   transition: 0.5s;
+  border: none;
 }
 
 .sidebar-inc-button .inc-icon {
@@ -174,7 +175,35 @@ body {
 /* TransactionList */
 .transactions-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.transaction-entry {
+  border: 1px solid #333;
+  width: 90%;
+  margin-top: 5px;
+  background: var(--dark-color);
+  color: #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-amount {
+  color: var(--incomes-color);
+  padding-left: 5px;
+}
+
+.transaction-title {
+  padding-right: 5px;
+}
+
+/* InputForm */
+#transaction-amount {
+  width: 40px;
+  margin-right: 10px;
 }
 
 /* Footer */

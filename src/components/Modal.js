@@ -32,11 +32,10 @@ const Modal = ({
     e.preventDefault();
   };
 
-  // If enter is pressed while focused on input field, this function is called
-  const onLabelKeyPress = e => {
-    if (e.key === 'Enter') {
-      onConfirmButtonClick(e.target.value);
-    }
+  // InputForm calls this function if 'enter' key is pressed.
+  // Receives object to be put in an array
+  const onLabelKeyPress = obj => {
+    onConfirmButtonClick(obj);
   };
 
   // If confirm button is clicked (or if the user hits enter),
