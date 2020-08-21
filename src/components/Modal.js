@@ -38,10 +38,9 @@ const Modal = ({
     onConfirmButtonClick(obj);
   };
 
-  // If confirm button is clicked (or if the user hits enter),
-  //we want to enter the current value into the appropriate transaction list. (done in above function)
-  const btnConfirmClicked = () => {
-    onConfirmButtonClick();
+  // Pass up data when confirm button is clicked
+  const btnConfirmClicked = obj => {
+    onConfirmButtonClick(obj);
   };
 
   // If cancel button is clicked, we close the modal.
@@ -60,13 +59,9 @@ const Modal = ({
             handleForm={handleForm}
             modal_body={modal_body}
             onLabelKeyPress={onLabelKeyPress}
+            btnConfirmClicked={btnConfirmClicked}
+            btnCancelClicked={btnCancelClicked}
           />
-          <button className="btn btn-confirm" onClick={btnConfirmClicked}>
-            Confirm
-          </button>
-          <button className="btn btn-cancel" onClick={btnCancelClicked}>
-            Cancel
-          </button>
         </div>
       </div>
     </div>

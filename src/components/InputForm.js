@@ -30,9 +30,21 @@ class InputForm extends React.Component {
     }
   };
 
+  // Handles confirm button click. Need to call props function while passing
+  // the current state data
+  handleConfirmClick = () => {
+    this.props.btnConfirmClicked(this.state);
+  };
+
   render() {
     // Destructure props
-    const { handleForm, modal_body, onLabelKeyPress } = this.props;
+    const {
+      handleForm,
+      modal_body,
+      onLabelKeyPress,
+      btnConfirmClicked,
+      btnCancelClicked
+    } = this.props;
 
     return (
       <>
@@ -53,6 +65,12 @@ class InputForm extends React.Component {
             onChange={this.handleChange}
           ></input>
         </form>
+        <button className="btn btn-confirm" onClick={this.handleConfirmClick}>
+          Confirm
+        </button>
+        <button className="btn btn-cancel" onClick={btnCancelClicked}>
+          Cancel
+        </button>
       </>
     );
   }
