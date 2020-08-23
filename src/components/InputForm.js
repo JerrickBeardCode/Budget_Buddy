@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 
 // Function for handling form submit is passed as a prop from Modal.js
 
@@ -38,13 +38,7 @@ class InputForm extends React.Component {
 
   render() {
     // Destructure props
-    const {
-      handleForm,
-      modal_body,
-      onLabelKeyPress,
-      btnConfirmClicked,
-      btnCancelClicked
-    } = this.props;
+    const { handleForm, modal_body, btnCancelClicked } = this.props;
 
     return (
       <>
@@ -77,27 +71,3 @@ class InputForm extends React.Component {
 }
 
 export default InputForm;
-/*
-const InputForm = ({ handleForm, modal_body, onLabelKeyPress }) => {
-  // Destructure props in render
-  return (
-    <>
-      <form id="input-form" onSubmit={handleForm}>
-        <label>{`${modal_body} `}</label>
-        <input
-          type="text"
-          id="transaction-amount"
-          name="transaction-amount"
-          onKeyPress={onLabelKeyPress}
-        ></input>
-        <input
-          type="text"
-          id="transaction-title"
-          name="transaction-title"
-          onKeyPress={onLabelKeyPress}
-        ></input>
-      </form>
-    </>
-  );
-};
-*/

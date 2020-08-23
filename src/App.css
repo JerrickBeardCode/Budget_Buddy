@@ -46,7 +46,6 @@ body {
 
 /* Modal */
 .modal-container {
-  z-index: 10;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -55,6 +54,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal-container .input-form,
+.modal-container .delete-form {
+  z-index: 10;
 }
 
 .modal-content-container {
@@ -189,6 +193,7 @@ body {
   color: #ddd;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .transaction-amount {

@@ -85,6 +85,7 @@ class Workspace extends React.Component {
             closeModal={this.closeModal}
             modal_header={`Add an ${this.state.add_type}:`}
             modal_body={`$`}
+            modal_type={'input-form'}
             onConfirmButtonClick={this.onConfirmButtonClick}
           />
         ) : null}

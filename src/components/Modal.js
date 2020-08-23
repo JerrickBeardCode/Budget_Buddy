@@ -1,10 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 import InputForm from './InputForm';
+import DeleteForm from './DeleteForm';
+
+/* PROPS:
+  closeModal - callback for closing 
+  modal_header - header text for modal
+  modal_body - body text for modal
+  modal_type - type of child component Modal should generate (InputForm, DeleteEntry, etc)
+  onConfirmButtonClick - callback for confirm button's onClick
+*/
 
 const Modal = ({
   closeModal,
   modal_header,
   modal_body,
+  modal_type,
   onConfirmButtonClick
 }) => {
   const area = useRef(); // Linked to ref in model container
@@ -51,17 +61,40 @@ const Modal = ({
   /////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="modal-container">
+    <div className={`modal-container ${modal_type}`}>
       <div className="modal-content-container">
         <div ref={area} className="modal-content">
           <div className="modal-header">{modal_header}</div>
-          <InputForm
-            handleForm={handleForm}
-            modal_body={modal_body}
-            onLabelKeyPress={onLabelKeyPress}
-            btnConfirmClicked={btnConfirmClicked}
-            btnCancelClicked={btnCancelClicked}
-          />
+
+          {/*Note: you can add another IIFE and pass props for any type of modal you need*/}
+          {(() => {
+            if (modal_type === 'input-form') {
+              return (
+                <InputForm
+                  handleForm={handleForm}
+                  modal_body={modal_body}
+                  onLabelKeyPress={onLabelKeyPress}
+                  btnConfirmClicked={btnConfirmClicked}
+                  btnCancelClicked={btnCancelClicked}
+                />
+              );
+            } else {
+              return null;
+            }
+          })()}
+
+          {(() => {
+            if (modal_type === 'delete-form') {
+              return (
+                <DeleteForm
+                  modal_body={modal_body}
+                  btnCancelClicked={btnCancelClicked}
+                />
+              );
+            } else {
+              return null;
+            }
+          })()}
         </div>
       </div>
     </div>

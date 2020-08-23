@@ -10,6 +10,30 @@
   transition: 0.5s;
 }
 
+.delete-entry-btn {
+  padding: 1px;
+}
+
+.btn-light {
+  background: #eee;
+  transition: 0.5s;
+  border: none;
+}
+
+.btn-light:hover {
+  background: #ccc;
+}
+
+.btn-dark {
+  background: #333;
+  transition: 0.5s;
+  border: none;
+}
+
+.btn-dark:hover {
+  background: #111;
+}
+
 .btn:hover {
   background: #ccc;
 }
