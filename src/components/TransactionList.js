@@ -3,6 +3,7 @@ import Modal from './Modal';
 
 // PROPS: items_arr - array of transaction items to be displayed
 //        deleteArrayItem - callback to Workspace.js that updates appropriate array
+//        type - incomes or expenses? (used for class names)
 class TransactionList extends React.Component {
   // State - is the user currently trying to delete an item?
   state = { item_to_delete: null, modal_active: false };
@@ -29,21 +30,23 @@ class TransactionList extends React.Component {
   };
 
   render() {
-    const { items_arr } = this.props;
+    const { items_arr, type } = this.props;
 
     return (
       <div className="transactions-container">
         {/* Use item index for key. Keys reassigned on each render call */}
         {items_arr.map((item, index) => {
           return (
-            <div className="transaction-entry" key={index}>
-              <span className="transaction-amount">$ {item.amount}</span>
+            <div className={`${type}-transaction-entry`} key={index}>
+              <span className={`${type}-transaction-amount`}>
+                $ {item.amount}
+              </span>
               <p className="entry-right">
                 <span className="transaction-title">{item.title}</span>
                 {/* Our delete button has the key, so that we can obtain the info 
                       for the item we want to delete */}
                 <button
-                  className="delete-entry-btn btn-light"
+                  className={`delete-entry-btn ${type}-delete-btn`}
                   onClick={this.toggleModal}
                 >
                   X

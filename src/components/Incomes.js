@@ -19,6 +19,7 @@ const Incomes = ({ num_incomes, incomes_arr, deleteArrayItem }) => {
 
       <TransactionList
         items_arr={incomes_arr}
+        type="incomes"
         deleteArrayItem={deleteArrayItem}
       />
     </div>

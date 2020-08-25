@@ -185,7 +185,7 @@ body {
   width: 100%;
 }
 
-.transaction-entry {
+.incomes-transaction-entry {
   border: 1px solid #333;
   width: 90%;
   margin-top: 5px;
@@ -196,8 +196,24 @@ body {
   align-items: center;
 }
 
-.transaction-amount {
+.expenses-transaction-entry {
+  border: 1px solid #ddd;
+  width: 90%;
+  margin-top: 5px;
+  background: var(--light-color);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incomes-transaction-amount {
   color: var(--incomes-color);
+  padding-left: 5px;
+}
+
+.expenses-transaction-amount {
+  color: var(--expenses-color);
   padding-left: 5px;
 }
 

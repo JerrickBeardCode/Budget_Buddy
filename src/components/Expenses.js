@@ -18,6 +18,7 @@ const Expenses = ({ num_expenses, expenses_arr, deleteArrayItem }) => {
 
       <TransactionList
         items_arr={expenses_arr}
+        type="expenses"
         deleteArrayItem={deleteArrayItem}
       />
     </div>

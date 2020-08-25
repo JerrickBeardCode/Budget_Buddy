@@ -20,8 +20,14 @@ class Sidebar extends React.Component {
       el => (expenses_total = expenses_total + parseFloat(el.amount)) // Convert string to float!
     );
 
+    // Calculate true total and round to two decimal places
+    let true_total = incomes_total + -1 * expenses_total;
+
+    // Round to 2 consistent decimals
+    true_total = Number(Math.round(true_total + 'e' + 2) + 'e-' + 2).toFixed(2);
+
     // Return true total
-    return <>${incomes_total + -1 * expenses_total}</>;
+    return <>${true_total}</>;
   };
 
   render() {
