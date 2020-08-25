@@ -10,10 +10,10 @@ import React from 'react';
 // onLabelKeyPress: callback function to handle when a key is pressed during input (usually 'Enter' key)
 
 class InputForm extends React.Component {
-  // State is used to handle multiple input fields
   state = {
-    amount: null,
-    title: ''
+    amount: null, // Amount of transaction
+    title: '', // Transaction title,
+    transaction_id: 300 // Unique id for each transaction, starting value arbitrary
   };
 
   handleChange = e => {

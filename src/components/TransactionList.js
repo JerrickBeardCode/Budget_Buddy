@@ -2,9 +2,10 @@ import React from 'react';
 import Modal from './Modal';
 
 // PROPS: items_arr - array of transaction items to be displayed
+//        deleteArrayItem - callback to Workspace.js that updates appropriate array
 class TransactionList extends React.Component {
   // State - is the user currently trying to delete an item?
-  state = { attempt_delete: false, item_to_delete: null, modal_active: false };
+  state = { item_to_delete: null, modal_active: false };
 
   /*
   handleDeleteButton = () => {
@@ -21,10 +22,10 @@ class TransactionList extends React.Component {
     this.setState({ modal_active: false });
   };
 
-  // Delete the item
+  // If confirm is clicked, we need to delete the item
   onConfirmButtonClick = () => {
-    // TODO
-    console.log(`TODO: how will we delete the item???`);
+    // Callback passed from Workspace.js
+    //this.props.deleteArrayItem();
   };
 
   render() {
@@ -32,22 +33,23 @@ class TransactionList extends React.Component {
 
     return (
       <div className="transactions-container">
-        {items_arr.map(item => {
+        {/* Use item index for key. Keys reassigned on each render call */}
+        {items_arr.map((item, index) => {
           return (
-            <>
-              <div className="transaction-entry">
-                <span className="transaction-amount">$ {item.amount}</span>
-                <p className="entry-right">
-                  <span className="transaction-title">{item.title}</span>
-                  <button
-                    className="delete-entry-btn btn-light"
-                    onClick={this.toggleModal}
-                  >
-                    X
-                  </button>
-                </p>
-              </div>
-            </>
+            <div className="transaction-entry" key={index}>
+              <span className="transaction-amount">$ {item.amount}</span>
+              <p className="entry-right">
+                <span className="transaction-title">{item.title}</span>
+                {/* Our delete button has the key, so that we can obtain the info 
+                      for the item we want to delete */}
+                <button
+                  className="delete-entry-btn btn-light"
+                  onClick={this.toggleModal}
+                >
+                  X
+                </button>
+              </p>
+            </div>
           );
         })}
         {this.state.modal_active ? (

@@ -17,7 +17,8 @@ class Workspace extends React.Component {
     num_incomes: 0, // App starts with 0 incomes
     num_expenses: 0, // App starts with 0 expenses
     incomes_arr: [],
-    expenses_arr: []
+    expenses_arr: [],
+    transaction_id: 0 // Used as key when calling map function
   };
 
   // This function will trigger a modal whenever the 'Add Income' button is clicked
@@ -62,22 +63,35 @@ class Workspace extends React.Component {
     this.closeModal();
   };
 
+  // Function for deleting an item from the appropriate array.
+  // Props path(s): Workspace >> Incomes >> TransactionList
+  //             Workspace >> Expenses >> TransactionList
+  // index - index of item to be removed
+  // array_type - income or expense array
+  deleteArrayItem = (index, array_type) => {
+    // TODO: delete the item from the array
+  };
+
   render() {
     return (
       <section id="workspace-container">
         <Sidebar
           onIncButtonClick={this.onIncButtonClick}
           onExpButtonClick={this.onExpButtonClick}
+          incomes_arr={this.state.incomes_arr}
+          expenses_arr={this.state.expenses_arr}
         />
 
         <Incomes
           num_incomes={this.state.num_incomes}
           incomes_arr={this.state.incomes_arr}
+          deleteArrayItem={this.deleteArrayItem}
         />
 
         <Expenses
           num_expenses={this.state.num_expenses}
           expenses_arr={this.state.expenses_arr}
+          deleteArrayItem={this.deleteArrayItem}
         />
 
         {this.state.modal_active ? (
