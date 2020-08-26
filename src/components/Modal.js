@@ -88,6 +88,7 @@ const Modal = ({
               return (
                 <DeleteForm
                   modal_body={modal_body}
+                  btnConfirmClicked={btnConfirmClicked}
                   btnCancelClicked={btnCancelClicked}
                 />
               );

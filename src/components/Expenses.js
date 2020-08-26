@@ -8,7 +8,13 @@ const Expenses = ({ num_expenses, expenses_arr, deleteArrayItem }) => {
     expenses_arr.forEach(
       el => (expenses_total = expenses_total + parseFloat(el.amount))
     );
-    return <>${expenses_total * -1}</>;
+
+    // Round to 2 decimal places (and flip to negative)
+    expenses_total = Number(
+      Math.round(expenses_total + 'e' + 2) + 'e-' + 2
+    ).toFixed(2);
+
+    return <>$-{expenses_total}</>;
   };
   return (
     <div id="expenses-container">

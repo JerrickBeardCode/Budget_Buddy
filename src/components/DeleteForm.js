@@ -1,10 +1,15 @@
 import React from 'react';
 
 // Function for deleting an item from the TransactionList component.
-
+// PROPS: modal_body - text for modal body
+//        btnConfirmClicked - callback to modal
+//        btnCancelCliked - callback to modal
 class DeleteForm extends React.Component {
   handleConfirmClick = () => {
-    // TODO
+    // Use callback method from modal
+    // (this function requires an object param, but we don't have one here.
+    //  Use a temporary one)
+    this.props.btnConfirmClicked({ temp_object: 0 });
   };
 
   render() {

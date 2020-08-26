@@ -1,12 +1,13 @@
 import React from 'react';
 import Modal from './Modal';
+import { thisExpression } from '@babel/types';
 
 // PROPS: items_arr - array of transaction items to be displayed
 //        deleteArrayItem - callback to Workspace.js that updates appropriate array
 //        type - incomes or expenses? (used for class names)
 class TransactionList extends React.Component {
   // State - is the user currently trying to delete an item?
-  state = { item_to_delete: null, modal_active: false };
+  state = { id_to_delete: null, modal_active: false };
 
   /*
   handleDeleteButton = () => {
@@ -14,8 +15,8 @@ class TransactionList extends React.Component {
   };*/
 
   // Set modal_active to true so modal renders
-  toggleModal = () => {
-    this.setState({ modal_active: true });
+  toggleModal = id => {
+    this.setState({ modal_active: true, id_to_delete: id });
   };
 
   // Set modal_active state so modal doesn't render
@@ -24,9 +25,16 @@ class TransactionList extends React.Component {
   };
 
   // If confirm is clicked, we need to delete the item
-  onConfirmButtonClick = () => {
+  onConfirmButtonClick = ignore => {
     // Callback passed from Workspace.js
-    //this.props.deleteArrayItem();
+    this.closeModal();
+    this.props.deleteArrayItem(this.state.id_to_delete);
+  };
+
+  // Convert item value to 2 decimals
+  twoDecimals = val => {
+    val = Number(Math.round(val + 'e' + 2) + 'e-' + 2).toFixed(2);
+    return val;
   };
 
   render() {
@@ -35,11 +43,20 @@ class TransactionList extends React.Component {
     return (
       <div className="transactions-container">
         {/* Use item index for key. Keys reassigned on each render call */}
-        {items_arr.map((item, index) => {
+        {items_arr.map(item => {
           return (
-            <div className={`${type}-transaction-entry`} key={index}>
+            <div
+              className={`${type}-transaction-entry`}
+              key={item.transaction_id}
+            >
               <span className={`${type}-transaction-amount`}>
-                $ {item.amount}
+                {(() => {
+                  if (type === 'incomes') {
+                    return <>$ {this.twoDecimals(item.amount)}</>;
+                  } else {
+                    return <>$-{this.twoDecimals(item.amount)}</>;
+                  }
+                })()}
               </span>
               <p className="entry-right">
                 <span className="transaction-title">{item.title}</span>
@@ -47,7 +64,7 @@ class TransactionList extends React.Component {
                       for the item we want to delete */}
                 <button
                   className={`delete-entry-btn ${type}-delete-btn`}
-                  onClick={this.toggleModal}
+                  onClick={() => this.toggleModal(item.transaction_id)}
                 >
                   X
                 </button>

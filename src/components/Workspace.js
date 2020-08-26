@@ -42,6 +42,11 @@ class Workspace extends React.Component {
   // need to send the entered data to the appropriate TransactionList component
   // (either in Incomes.js or Expenses.js)
   onConfirmButtonClick = input_value => {
+    // !!!: Since we don't set the id inside of InputForm.js, we have to do it here.
+    // Set id for the object parameter (input value) before storing it in the array
+    input_value.transaction_id = this.state.transaction_id;
+    const next_transaction_id = this.state.transaction_id + 1; // Need a new id to store in the state
+
     // Use current state of add_type to determine if user input an income or an expense
     if (this.state.add_type === 'income') {
       const temp = this.state.num_incomes + 1;
@@ -50,26 +55,45 @@ class Workspace extends React.Component {
       const temp_arr = [...this.state.incomes_arr];
       temp_arr.push(input_value);
 
-      this.setState({ num_incomes: temp, incomes_arr: temp_arr });
+      this.setState({
+        num_incomes: temp,
+        incomes_arr: temp_arr,
+        transaction_id: next_transaction_id
+      });
     } else {
       const temp = this.state.num_expenses + 1;
 
       const temp_arr = [...this.state.expenses_arr];
       temp_arr.push(input_value);
 
-      this.setState({ num_expenses: temp, expenses_arr: temp_arr });
+      this.setState({
+        num_expenses: temp,
+        expenses_arr: temp_arr,
+        transaction_id: next_transaction_id
+      });
     }
 
     this.closeModal();
   };
 
   // Function for deleting an item from the appropriate array.
-  // Props path(s): Workspace >> Incomes >> TransactionList
-  //             Workspace >> Expenses >> TransactionList
-  // index - index of item to be removed
-  // array_type - income or expense array
-  deleteArrayItem = (index, array_type) => {
-    // TODO: delete the item from the array
+  // Receives the transaction_id of the item user wants to delete.
+  // Loop over array, find appropriate item, and delete it.
+  deleteArrayItem = id_to_delete => {
+    // Find the array item with id === id_to_delete and remove it from the array
+    // Must do this for incomes_arr and expenses_arr
+    const updated_incomes_arr = this.state.incomes_arr.filter(
+      el => el.transaction_id !== id_to_delete
+    );
+
+    const updated_expenses_arr = this.state.expenses_arr.filter(
+      el => el.transaction_id !== id_to_delete
+    );
+
+    this.setState({
+      incomes_arr: updated_incomes_arr,
+      expenses_arr: updated_expenses_arr
+    });
   };
 
   render() {

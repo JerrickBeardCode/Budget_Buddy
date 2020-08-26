@@ -13,7 +13,7 @@ class InputForm extends React.Component {
   state = {
     amount: null, // Amount of transaction
     title: '', // Transaction title,
-    transaction_id: 300 // Unique id for each transaction, starting value arbitrary
+    transaction_id: -1 // Unique id for each transaction, starting value arbitrary
   };
 
   handleChange = e => {
