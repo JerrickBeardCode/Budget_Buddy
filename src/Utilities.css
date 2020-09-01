@@ -12,27 +12,25 @@
 
 .delete-entry-btn {
   padding: 1px;
+  height: 15px;
+  width: 15px;
+  line-height: 15px;
+  border-radius: 50%;
 }
 
-.incomes-delete-btn {
+.incomes-delete-btn,
+.expenses-delete-btn {
   background: #eee;
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
   border: none;
 }
 
 .incomes-delete-btn:hover {
-  background: #ccc;
-}
-
-.expenses-delete-btn {
-  background: #333;
-  color: #eee;
-  border: none;
-  transition: 0.5s;
+  background: var(--expenses-color);
 }
 
 .expenses-delete-btn:hover {
-  background: #555;
+  background: var(--expenses-color);
 }
 
 .btn-light {

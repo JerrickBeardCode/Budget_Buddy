@@ -13,13 +13,27 @@ class InputForm extends React.Component {
   state = {
     amount: null, // Amount of transaction
     title: '', // Transaction title,
-    transaction_id: -1 // Unique id for each transaction, starting value arbitrary
+    transaction_id: -1, // Unique id for each transaction, starting value arbitrary
+    non_number_attempt: false // True if user tries to enter a non-number for 'amount' field
   };
 
-  handleChange = e => {
-    // Bracket notation to define new state
-    // name === 'amount' || 'title'
-    this.setState({ [e.target.name]: e.target.value });
+  handleAmountChange = e => {
+    // Validate input: don't let user enter a non-number
+    if (isNaN(e.target.value)) {
+      e.target.value = e.target.value.substring(0, e.target.value.length - 1);
+      this.setState({ non_number_attempt: true });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+  };
+
+  handleTitleChange = e => {
+    // Validate input: max length of 30 characters
+    if (e.target.value.length > 30) {
+      e.target.value = e.target.value.substring(0, e.target.value.length - 1);
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   };
 
   // Handles key press. If 'enter' key was hit, call onLabelKeyPress and pass
@@ -48,15 +62,17 @@ class InputForm extends React.Component {
             type="text"
             id="transaction-amount"
             name="amount"
+            placeholder="Amount"
             onKeyPress={this.handleKeyPress}
-            onChange={this.handleChange}
+            onChange={this.handleAmountChange}
           ></input>
           <input
             type="text"
             id="transaction-title"
             name="title"
+            placeholder="Description"
             onKeyPress={this.handleKeyPress}
-            onChange={this.handleChange}
+            onChange={this.handleTitleChange}
           ></input>
         </form>
         <button className="btn btn-confirm" onClick={this.handleConfirmClick}>
@@ -65,6 +81,11 @@ class InputForm extends React.Component {
         <button className="btn btn-cancel" onClick={btnCancelClicked}>
           Cancel
         </button>
+        {this.state.non_number_attempt ? (
+          <p className="modal-amount-error">
+            Please only enter numbers or decimals for amount
+          </p>
+        ) : null}
       </>
     );
   }

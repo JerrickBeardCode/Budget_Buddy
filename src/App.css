@@ -7,7 +7,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Comfortaa, sans-serif;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -35,6 +35,20 @@ body {
 
 #main-header {
   color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+#title {
+  margin-left: 30px;
+  font-size: 50px;
+}
+
+.curr-date {
+  margin-right: 30px;
+  color: rgb(106, 178, 180);
 }
 
 /* Workspace */
@@ -72,12 +86,17 @@ body {
 .modal-content {
   cursor: pointer;
   background: #333;
-  height: 22%;
+  height: 28%;
   width: 30%;
   text-align: center;
   border: 1.5px solid var(--primary-color);
   padding: 10px 10px 20px 10px;
   color: var(--light-color);
+}
+
+.modal-amount-error {
+  font-size: 10px;
+  color: rgb(252, 55, 55);
 }
 
 /* Sidebar */
@@ -88,6 +107,7 @@ body {
   height: 100%;
   background: #333;
   justify-content: space-between;
+  font-size: 1.5rem;
 }
 
 #sidebar-container p {
@@ -104,13 +124,23 @@ body {
 .sidebar-exp-button {
   padding: 8px 5px;
   margin: 0px 5px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   border-radius: 2px;
-  background-color: #ddd;
-  transition: 0.5s;
-  border: none;
+  background-color: #333;
+  transition: 0.5s ease-in-out;
+  color: #eee;
+  font-weight: bold;
 }
 
+.sidebar-inc-button {
+  border: 2px solid var(--incomes-color);
+}
+
+.sidebar-exp-button {
+  border: 2px solid var(--expenses-color);
+}
+
+/*
 .sidebar-inc-button .inc-icon {
   color: var(--incomes-color);
   font-size: 1rem;
@@ -120,19 +150,27 @@ body {
   color: var(--expenses-color);
   font-size: 1.2rem;
 }
+*/
 
-.sidebar-inc-button:hover,
+.sidebar-inc-button:hover {
+  cursor: pointer;
+  background-color: var(--incomes-color);
+  color: #eee;
+}
+
 .sidebar-exp-button:hover {
   cursor: pointer;
-  background-color: #bbb;
+  background-color: var(--expenses-color);
+  color: #eee;
 }
 
 .sidebar-total {
   font-size: 25px;
   margin-bottom: 10px;
 }
-.sidebar-total span {
+.sidebar-total .total {
   color: var(--primary-color);
+  font-size: 2rem;
 }
 
 /* Incomes */
@@ -140,15 +178,15 @@ body {
   display: flex;
   width: 42.5%;
   height: 100%;
-  background: var(--light-color);
+  background: var(--primary-color);
   flex-direction: column;
 }
 
 #incomes-container .incomes-header {
   text-align: center;
   width: 100%;
-  margin-top: 5px;
-  font-size: 20px;
+  margin-top: 20px;
+  font-size: 2rem;
 }
 
 #incomes-container .incomes-header span {
@@ -160,16 +198,15 @@ body {
   display: flex;
   width: 42.5%;
   height: 100%;
-  background: #333;
-  color: #eee;
+  background: var(--primary-color);
   flex-direction: column;
 }
 
 #expenses-container .expenses-header {
   text-align: center;
   width: 100%;
-  margin-top: 5px;
-  font-size: 20px;
+  margin-top: 20px;
+  font-size: 2rem;
 }
 
 #expenses-container .expenses-header span {
@@ -185,7 +222,8 @@ body {
   width: 100%;
 }
 
-.incomes-transaction-entry {
+.incomes-transaction-entry,
+.expenses-transaction-entry {
   border: 1px solid #333;
   width: 90%;
   margin-top: 5px;
@@ -194,17 +232,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.expenses-transaction-entry {
-  border: 1px solid #ddd;
-  width: 90%;
-  margin-top: 5px;
-  background: var(--light-color);
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 1.5rem;
 }
 
 .incomes-transaction-amount {
@@ -218,12 +246,18 @@ body {
 }
 
 .transaction-title {
+  padding-right: 10px;
+}
+
+.entry-right {
+  display: flex;
+  align-items: center;
   padding-right: 5px;
 }
 
 /* InputForm */
 #transaction-amount {
-  width: 40px;
+  width: 45px;
   margin-right: 10px;
 }
 
@@ -240,5 +274,21 @@ body {
 #footer {
   background: inherit;
   color: #eee;
-  font-size: 0.6rem;
+  font-size: 1rem;
+}
+
+.general {
+  border-right: #333 solid 2px;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.links a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.5s;
+}
+
+.links a:hover {
+  color: var(--primary-color);
 }

@@ -5,7 +5,12 @@ const Footer = ({ project_title, name, year }) => {
   return (
     <div id="footer-container">
       <div id="footer">
-        {project_title} - {name} {year}
+        <span className="general">
+          {project_title} - {name} {year}
+        </span>
+        <span className="links">
+          <a href="https://github.com/JerrickBeardCode">GitHub</a>
+        </span>
       </div>
     </div>
   );
