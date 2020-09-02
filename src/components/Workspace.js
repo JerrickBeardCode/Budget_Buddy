@@ -4,7 +4,7 @@
 // and 3.) the expenses component
 
 import React from 'react';
-import { Spring } from 'react-spring'; // For Animations
+import { Spring } from 'react-spring/renderprops'; // For Animations
 import Sidebar from './Sidebar';
 import Incomes from './Incomes';
 import Expenses from './Expenses';
@@ -120,13 +120,23 @@ class Workspace extends React.Component {
         />
 
         {this.state.modal_active ? (
-          <Modal
-            closeModal={this.closeModal}
-            modal_header={`Add an ${this.state.add_type}:`}
-            modal_body={`$`}
-            modal_type={'input-form'}
-            onConfirmButtonClick={this.onConfirmButtonClick}
-          />
+          <Spring
+            config={{ duration: 200 }}
+            from={{ opacity: 0 }}
+            to={{ opacity: 1 }}
+          >
+            {props => (
+              <div style={props}>
+                <Modal
+                  closeModal={this.closeModal}
+                  modal_header={`Add an ${this.state.add_type}:`}
+                  modal_body={`$`}
+                  modal_type={'input-form'}
+                  onConfirmButtonClick={this.onConfirmButtonClick}
+                />
+              </div>
+            )}
+          </Spring>
         ) : null}
       </section>
     );

@@ -65,6 +65,7 @@ class InputForm extends React.Component {
             placeholder="Amount"
             onKeyPress={this.handleKeyPress}
             onChange={this.handleAmountChange}
+            autoFocus={true}
           ></input>
           <br />
           <input
