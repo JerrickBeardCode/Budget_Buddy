@@ -4,6 +4,7 @@
 // and 3.) the expenses component
 
 import React from 'react';
+import { Spring } from 'react-spring'; // For Animations
 import Sidebar from './Sidebar';
 import Incomes from './Incomes';
 import Expenses from './Expenses';

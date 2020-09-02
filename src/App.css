@@ -58,47 +58,6 @@ body {
   height: 75vh;
 }
 
-/* Modal */
-.modal-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-container .input-form,
-.modal-container .delete-form {
-  z-index: 10;
-}
-
-.modal-content-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  cursor: pointer;
-  background: #333;
-  height: 28%;
-  width: 30%;
-  text-align: center;
-  border: 1.5px solid var(--primary-color);
-  padding: 10px 10px 20px 10px;
-  color: var(--light-color);
-}
-
-.modal-amount-error {
-  font-size: 10px;
-  color: rgb(252, 55, 55);
-}
-
 /* Sidebar */
 #sidebar-container {
   display: flex;
@@ -127,7 +86,7 @@ body {
   font-size: 1rem;
   border-radius: 2px;
   background-color: #333;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
   color: #eee;
   font-weight: bold;
 }
@@ -246,6 +205,7 @@ body {
 }
 
 .transaction-title {
+  font-size: 1.2rem;
   padding-right: 10px;
 }
 
@@ -255,11 +215,71 @@ body {
   padding-right: 5px;
 }
 
+/* Modal */
+.modal-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; /*
+  display: flex;
+  justify-content: center;
+  align-items: center;*/
+  background-color: rgba(238, 238, 238, 0.495); /* Opaque Background*/
+  z-index: 10;
+}
+
+.modal-content-container {
+  top: 15%;
+  left: 15%;
+  position: relative;
+  height: 75%;
+  width: 85%;
+  /* Above styling is done so that modal-content-container only contains
+     the area of the incomes-container and expenses-container (and the modal
+     appears in the direct middle of those containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  cursor: pointer;
+  background: #333;
+  height: 38%;
+  width: 40%;
+  text-align: center;
+  border: 1.5px solid var(--primary-color);
+  padding: 10px 10px 20px 10px;
+  color: var(--light-color);
+  font-size: 1.3rem;
+}
+
+.modal-header {
+  font-size: 1.5rem;
+}
+
+.modal-amount-error {
+  font-size: 0.8rem;
+  color: rgb(252, 55, 55);
+}
+
 /* InputForm */
+#input-form input {
+  font-size: 1.2rem;
+  margin: 5px;
+}
+
 #transaction-amount {
-  width: 45px;
+  width: 30%;
   margin-right: 10px;
 }
+
+#transaction-title {
+  width: 60%;
+}
+
+/* DeleteForm */
 
 /* Footer */
 #footer-container {

@@ -6,7 +6,7 @@ import DeleteForm from './DeleteForm';
   closeModal - callback for closing 
   modal_header - header text for modal
   modal_body - body text for modal
-  modal_type - type of child component Modal should generate (InputForm, DeleteEntry, etc)
+  modal_type - type of child component Modal should generate (InputForm, DeleteForm, etc)
   onConfirmButtonClick - callback for confirm button's onClick
 */
 

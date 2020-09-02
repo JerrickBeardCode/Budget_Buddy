@@ -66,6 +66,7 @@ class InputForm extends React.Component {
             onKeyPress={this.handleKeyPress}
             onChange={this.handleAmountChange}
           ></input>
+          <br />
           <input
             type="text"
             id="transaction-title"
@@ -75,15 +76,18 @@ class InputForm extends React.Component {
             onChange={this.handleTitleChange}
           ></input>
         </form>
-        <button className="btn btn-confirm" onClick={this.handleConfirmClick}>
+        <button
+          className="btn btn-confirm btn-sz-sm"
+          onClick={this.handleConfirmClick}
+        >
           Confirm
         </button>
-        <button className="btn btn-cancel" onClick={btnCancelClicked}>
+        <button className="btn btn-cancel btn-sz-sm" onClick={btnCancelClicked}>
           Cancel
         </button>
         {this.state.non_number_attempt ? (
           <p className="modal-amount-error">
-            Please only enter numbers or decimals for amount
+            Please only enter numbers or decimals for amount.
           </p>
         ) : null}
       </>

@@ -7,7 +7,14 @@
   text-align: center;
   cursor: pointer;
   border-radius: 16px;
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
+}
+
+/* btn font sizes */
+.btn-sz-sm {
+  font-size: 1rem;
+  width: 6rem;
+  height: 1.8rem;
 }
 
 .delete-entry-btn {
@@ -16,6 +23,7 @@
   width: 15px;
   line-height: 15px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .incomes-delete-btn,
@@ -58,9 +66,25 @@
 }
 
 .btn-confirm {
-  background: rgb(83, 207, 83);
+  background: #333;
+  border: 2px solid rgb(83, 207, 83);
+  color: #eee;
+  font-weight: bold;
+  padding: 3px;
 }
 
 .btn-confirm:hover {
-  background: rgb(111, 238, 111);
+  background: rgb(83, 207, 83);
+}
+
+.btn-cancel {
+  background: #333;
+  border: 2px solid #eee;
+  font-weight: bold;
+  color: #eee;
+}
+
+.btn-cancel:hover {
+  background: #eee;
+  color: #222;
 }
